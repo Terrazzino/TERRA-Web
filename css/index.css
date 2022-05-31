@@ -1,0 +1,1675 @@
+/* ########### TIPOGRAFIAS ########## */
+@font-face {
+    font-family: 'Cinzel';
+    src: url(../Tipografias/H/Cinzel-VariableFont_wght.ttf);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Cinzel', serif;
+}
+
+@font-face {
+    font-family: 'Oleo Script Swash Caps';
+    src: url(../Tipografias/anchor/OleoScriptSwashCaps-Regular.ttf);
+}
+
+a {
+    font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url(../Tipografias/parrafos-y-otros/Inconsolata-VariableFont_wdth\,wght.ttf);
+}
+
+p,
+li {
+    font-family: 'Inconsolata', monospace;
+}
+
+
+
+
+
+
+
+
+
+
+/* ########### GENERICO ENCABEZADO, LOGO, ANIMACION DE TODOS LOS H1 ########## */
+/*Standarizacion de la pagina en general*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #000000;
+}
+
+/*H1 y sus caracteristicas*/
+h1 {
+    color: rgb(231, 179, 37);
+    text-align: start;
+    margin: 10px 50px 0px;
+    animation-name: deslizaH1;
+    animation-duration: 0.5s;
+}
+
+@keyframes deslizaH1 {
+    0% {
+        transform: translatex(-300px);
+        color: transparent;
+    }
+
+    100% {
+        transform: translatex(0);
+    }
+}
+
+/*LOGO del proyecto*/
+header {
+    background-image: url(../imagenes/banerBW.png);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: cover;
+    width: 100%;
+}
+
+.logo {
+    text-align: center;
+}
+
+.logo-img {
+    animation-name: caeLogo;
+    animation-duration: 1s;
+}
+
+@keyframes caeLogo {
+    0% {
+        transform: translate(7px, -5px);
+    }
+
+    60% {
+        transform: translate(-5px, 3px);
+    }
+
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+/*GRID GENERICO para utilizar en todos los grids que hagan falta*/
+header {
+    grid-area: header;
+}
+
+nav {
+    grid-area: nav;
+}
+
+section {
+    grid-area: section;
+}
+
+aside {
+    grid-area: aside;
+    width: 20%;
+}
+
+footer {
+    grid-area: footer;
+}
+
+/*Este GRID respecta a todas las paginas exepto al INDEX que a diferencia del resto de sitios lleva en su semantica el uso de la etiqueta ASIDE*/
+.grid-sin-aside {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "nav section"
+        "footer footer";
+    grid-template-columns: 10% 1fr;
+    grid-template-rows: auto;
+}
+
+
+
+
+
+
+
+
+/* ########### NAV ########## */
+/*DIMENSIONAMIENTO DEL Width (Ancho del Width) */
+nav {
+    width: 200px;
+    z-index: 500;
+}
+
+nav ul {
+    background: linear-gradient(270deg, rgba(70, 53, 56, 0.927608543417367) 100%, rgba(156, 4, 68, 0.4822303921568627) 100%, rgba(215, 118, 135, 0.6446953781512605) 100%);
+}
+
+.nav-mobile {
+    display: none;
+}
+
+/*Caracteristicas de cada enlace con etiqueta "a" dentro del menu de navegacion, su margen y animacion para su aparicion en la pagina  */
+nav ul li a {
+    font-size: 30px;
+    color: #fff;
+    text-decoration: none;
+    animation-name: apareceMenu;
+    animation-duration: 4s;
+    padding-right: 10px;
+}
+
+nav ul li a:hover {
+    color: #ffcc65;
+    text-shadow: 0 0 15px #ffdc3f;
+}
+
+@keyframes apareceMenu {
+    0% {
+        color: #ffffff00;
+    }
+
+    100% {
+        color: #fff;
+    }
+}
+
+nav ul li {
+    margin: 30px 0px 30px 30px;
+}
+
+/*Contenedor del NAV y sus caracteristicas como alto, la disposicion de sus elementos con FLEX y el FIXED de los enlaces*/
+nav ul {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: end;
+
+}
+
+/*Caracteristicas de cada sub item dentro de los enlaces, trabajamos con los enlaces hijos de otros enlaces*/
+li ul {
+    height: max-content;
+    overflow: hidden;
+    display: none;
+    animation-name: fondo;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    color: #000000;
+    border-bottom-right-radius: 20px;
+}
+
+li:hover ul {
+    display: block;
+    position: absolute;
+    top: 394px;
+    left: 200px;
+}
+
+@keyframes fondo {
+    0% {
+        width: 0%;
+        background: linear-gradient(270deg, rgba(156, 4, 67, 0) 0%, rgba(215, 118, 136, 0) 0%, rgba(70, 53, 56, 0) 79%);
+        border-right: 1px solid #f78f0600;
+        border-bottom: 1px solid #f78f0600;
+    }
+
+    50% {
+        border-right: 1px solid #f78f0671;
+        border-bottom: 1px solid #f78f0671;
+    }
+
+    100% {
+        width: 250px;
+        background: linear-gradient(270deg, rgba(156, 4, 68, 0.4822303921568627) 0%, rgba(215, 118, 135, 0.6446953781512605) 0%, rgba(70, 53, 56, 0.927608543417367) 79%);
+        border-right: 2px solid #c78305;
+        border-bottom: 2px solid #c78305;
+    }
+}
+
+/*Creamos una animacion para los sub items de etiqueta "a" para cada vez que hagamos hover ensima de su etiqueta padre*/
+li ul li a {
+    animation-name: tamaño-letras;
+    animation-duration: 1s;
+}
+
+@keyframes tamaño-letras {
+    0% {
+        color: rgba(255, 255, 255, 0);
+        position: relative;
+        left: -200px;
+    }
+
+    20% {
+        color: rgba(255, 255, 255, 0);
+        position: relative;
+        left: -170px;
+    }
+
+    100% {
+        color: #fff;
+        position: relative;
+        left: 0px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* ########### INDEX ########## */
+/*Definimos la estructura de la pagina index con GRID */
+.body-index {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "nav section aside"
+        "footer footer footer";
+    grid-template-columns: 10% 70% 1fr;
+    grid-template-rows: auto;
+}
+
+/*Titulos de cada Bloque de la Historia descrita en el INDEX*/
+.titulo-presentacion {
+    font-size: 40px;
+}
+
+.titulos-historia {
+    font-size: 30px;
+}
+
+/*Caracteristicas del Primer Bloque con caracter de presentacion personal con el Lector*/
+.texto-presentacion {
+    width: 65%;
+    font-size: 22px;
+    padding-top: 10px;
+}
+
+.presentacion {
+    text-align: center;
+    height: auto;
+    margin-top: 2em;
+}
+
+/*Dimensiones de las imagenes utilizadas en el relato de la historia del INDEX*/
+.index-img {
+    width: auto;
+    height: 389px;
+}
+
+.img-banda {
+    width: auto;
+    height: 389px;
+}
+
+/*Distribucion de los elementos del primer Bloque de Introduccion del INDEX*/
+.presentacion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Dimensiones y distribucion de los elementos involucrados en todos los bloques de desarrollo de la historia en el INDEX*/
+article p,
+article div p {
+    width: 80%;
+    font-size: 18px;
+}
+
+.dimenciones-contenedor-historia {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    gap: 10px;
+    padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+/* ########### ASIDE ########## */
+aside {
+    background-image: url(../imagenes/index-img/clavijero-guitarra.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: min-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px 0 10px 20px;
+    border-radius: 30px;
+
+}
+
+aside h4 {
+    font-size: 5em;
+}
+
+aside ol {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.521);
+    margin: 0 10px;
+    padding: 18px;
+    border-radius: 10px;
+}
+
+aside ol li {
+    text-align: center;
+    letter-spacing: 0.5em;
+    font-size: 1.5em;
+    font-weight: 800;
+    color: #000000;
+    text-shadow: 0 0 20px #ffffff;
+}
+
+aside h5 {
+    text-align: center;
+    font-size: 1.2em;
+    letter-spacing: 5px;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 20px #000000;
+    background-color: #00000088;
+    margin: 0 5px;
+}
+
+.color-titulo-aside {
+    color: #000000;
+    text-shadow: 0 0 15px rgb(255, 255, 255);
+}
+
+
+
+
+
+
+
+
+
+
+/* ########### INTEGRANTES ########## */
+/*Dimensiones imagenes de la seccion INTEGRANTES*/
+.integrantes-img {
+    width: 200px;
+    height: auto;
+}
+
+.datos-integrantes {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    padding: 3em;
+}
+
+.bloque-integrantes h2 {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.datos-integrantes p {
+    margin-left: 3em;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+/* ########### ALBUMES ########## */
+.letra-portada-titulo-iframe {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: auto;
+}
+
+.orden-portada-lista-de-temas {
+    display: flex;
+    flex-direction: row;
+}
+
+/*Dimensionamiento y Foco de las imagenes de cada album*/
+.albumes-img {
+    width: 400px;
+    height: auto;
+    transition: 0.5s;
+}
+
+.albumes-img:hover {
+    width: 415px;
+    box-shadow: 0 0 15px #753e3e;
+}
+
+.portadas {
+    width: 400px;
+    height: auto;
+}
+
+/*Disposicion de los Elelementos de los Albumes y sus componentes*/
+.bloque-album {
+    display: flex;
+    flex-direction: column;
+}
+
+.bloque-album h2,
+.bloque-album a {
+    display: inline;
+    text-align: center;
+}
+
+.contenedor-todos-albumes {
+    margin-top: 6em;
+    margin-bottom: 6em;
+    display: grid;
+    grid-template-columns: repeat(4, 400px);
+    grid-template-rows: auto;
+    gap: 20px;
+    justify-content: center;
+}
+
+/**/
+.album-portada-letras {
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+iframe {
+    margin-top: 5em;
+    margin-bottom: 3em;
+    box-shadow: -5px 5px 15px #ffffff6b;
+}
+
+.iframe {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.iconos {
+    width: 80px;
+    height: auto;
+    transition: 0.6s;
+}
+
+.iconos:hover {
+    width: 100px;
+}
+
+.ep-lista-de-canciones {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3em;
+    margin-left: 3em;
+    padding: 0.5em;
+    justify-content: space-evenly;
+}
+
+
+
+.letra-fondo {
+    background-color: #161414;
+    width: max-content;
+    box-shadow: 0 0 15px #b88700;
+    padding: 10px;
+    margin: 10px;
+    animation-name: brilloLetras;
+    animation-duration: 2s;
+}
+
+@keyframes brilloLetras {
+    0% {
+        box-shadow: 0 0 15px #e0a76500;
+    }
+
+    30% {
+        box-shadow: 0 0 15px #940e0e5d;
+    }
+
+    100% {
+        box-shadow: 0 0 15px #b88700;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ########### FOTOS DE LA GALERIA ########## */
+/*Caracteristcas de presentacion de las imagenes previas a hgacerles foco y caracteristicas con el foco gracias a HOVER*/
+.galeria-img {
+    width: 500px;
+    height: auto;
+    filter: grayscale(70%) blur(1.5px);
+    transition: 1s;
+    border-radius: 5%;
+}
+
+.galeria-img:hover {
+    filter: none;
+    width: 620px;
+    z-index: 100;
+    box-shadow: 0 0 20px #753e3e;
+    border-radius: 0px;
+}
+
+.grid-galeria {
+    margin: 1em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-template-rows: auto;
+}
+
+.img1 {
+    grid-column: 1/2;
+}
+
+.img10 {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+.img11 {
+    grid-column: 3/4;
+    grid-row: 1/2;
+}
+
+.img9 {
+    grid-column: 1/2;
+    grid-row: 2/4;
+}
+
+.img2 {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+.img6 {
+    grid-column: 3/4;
+    grid-row: 2/3
+}
+
+.img7 {
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+
+.img5 {
+    grid-column: 3/4;
+    grid-row: 3/4;
+}
+
+.img13 {
+    grid-column: 1/2;
+    grid-row: 4/6;
+}
+
+.img3 {
+    grid-column: 3/4;
+    grid-row: 4/5;
+}
+
+.img21 {
+    grid-column: 2/3;
+    grid-row: 4/6;
+}
+
+.img30 {
+    grid-column: 3/4;
+    grid-row: 5/6;
+}
+
+.img16 {
+    grid-column: 3/4;
+    grid-row: 6/8;
+}
+
+.img15 {
+    grid-column: 2/3;
+    grid-row: 6/7;
+}
+
+.img4 {
+    grid-column: 2/3;
+    grid-row: 7/8;
+}
+
+.img20 {
+    grid-column: 1/2;
+    grid-row: 6/7;
+}
+
+.img12 {
+    grid-column: 1/2;
+    grid-row: 7/8;
+}
+
+.img24 {
+    grid-column: 3/4;
+    grid-row: 8/10;
+}
+
+.img33 {
+    grid-column: 2/3;
+    grid-row: 8/10;
+}
+
+.img26 {
+    grid-column: 1/2;
+    grid-row: 8/10;
+}
+
+.img23 {
+    grid-column: 2/3;
+    grid-row: 10/12;
+}
+
+.img32 {
+    grid-column: 1/2;
+    grid-row: 10/12;
+}
+
+.img22 {
+    grid-column: 3/4;
+    grid-row: 10/11;
+}
+
+.img8 {
+    grid-column: 3/4;
+    grid-row: 11/12;
+}
+
+.img29 {
+    grid-column: 1/2;
+    grid-row: 12/14;
+}
+
+.img25 {
+    grid-column: 2/3;
+    grid-row: 12/14;
+}
+
+.img28 {
+    grid-column: 3/4;
+    grid-row: 12/14;
+}
+
+
+
+
+
+
+
+
+
+
+/* ########### FOOTER ########## */
+.icono-footer {
+    width: 50px;
+    height: auto;
+    padding: 5px;
+    border-radius: 100%;
+    transition: 0.5s;
+}
+
+.icono-footer:hover {
+    width: 55px;
+    height: auto;
+    box-shadow: 0 0 20px rgb(231, 150, 125);
+}
+
+footer {
+    display: flex;
+    justify-content: space-evenly;
+    background: #463538;
+    margin-top: 1em;
+}
+
+.album-letra-en-rows {
+    display: flex;
+    flex-direction: row;
+}
+
+.album-letra-en-rows h2 {
+    text-align: center;
+}
+
+.album-letra-en-rows h4 {
+    margin-bottom: 2em;
+}
+
+.album-portada-letras h2 {
+    color: rgb(255, 244, 213);
+    text-align: center;
+}
+
+
+
+
+/* ########### CONTACTOS ########## */
+legend {
+    text-align: center;
+    font-size: 2em;
+}
+
+.formulario {
+    display: flex;
+    justify-content: center;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5em;
+    margin-bottom: 5em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    width: 70%;
+}
+
+input,
+textarea {
+    width: 40%;
+}
+
+textarea {
+    min-height: 20em;
+    max-height: 20em;
+    min-width: 40%;
+    max-width: 40%;
+}
+
+/* ########### # ########## */
+p,
+a,
+h4,
+label,
+legend {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+ol li a {
+    color: #a18343;
+    font-size: 22px;
+}
+
+ol li a:hover {
+    color: #ffcc65;
+    text-shadow: 0px 0px 10px #ffd000;
+}
+
+li {
+    list-style-type: none;
+}
+
+h2 {
+    color: #b86f52;
+}
+
+h3 {
+    color: #a35c40;
+}
+
+@media only screen and (max-width:425px) {
+
+    /*GENERALES DE LA PAGINA E INDEX*/
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .body-index {
+        display: grid;
+        grid-template-areas:
+            "header"
+            "nav"
+            "section"
+            "aside"
+            "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .logo {
+        text-align: start;
+    }
+
+    .logo-img {
+        width: 200px;
+    }
+
+    h1 {
+        font-size: 15px;
+        width: max-content;
+        margin-left: 5px;
+    }
+
+    .titulo-presentacion {
+        font-size: 20px;
+    }
+
+    .section-index article p {
+        width: 300px;
+        font-size: 15px;
+        text-align: center;
+    }
+
+
+
+    .nav-desktop {
+        display: none;
+    }
+
+    .nav-mobile ul {
+        display: none;
+        padding: 5px;
+        background: none;
+        animation-name: menu-hacia-abajo;
+        animation-duration: 0.7s;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes menu-hacia-abajo {
+        0% {
+            height: 0px;
+        }
+
+        100% {
+            height: 200px;
+        }
+    }
+
+    .nav-mobile ul li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-mobile ul li ul li {
+        display: none;
+    }
+
+    .nav-mobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background: linear-gradient(0deg, rgba(255, 0, 45, 1) 0%, rgba(203, 139, 150, 1) 10%, rgba(70, 53, 56, 1) 42%);
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        z-index: 1000;
+
+    }
+
+    .nav-mobile img {
+        width: 50px;
+        z-index: 1000;
+    }
+
+    .nav-mobile:hover ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+
+    .grid-sin-aside {
+        display: grid;
+        grid-template-areas:
+            "header"
+            "nav"
+            "section"
+            "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+
+
+
+    .index-img {
+        display: none;
+    }
+
+    #pandemia,
+    .contenedor-inicios,
+    .contenedor-post-pandemia {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    aside {
+        width: 280px;
+        margin: auto;
+    }
+
+    aside h4 {
+        font-size: 3em;
+    }
+
+    aside h5 {
+        font-size: 0.75em;
+    }
+
+    aside ol {
+        width: 200px;
+    }
+
+    aside ol li {
+        font-size: 0.8em;
+    }
+
+    .icono-footer {
+        width: 25px;
+    }
+
+    /*INTEGRANTES*/
+    .datos-integrantes {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 3em;
+        margin: 0;
+    }
+
+    .bloque-integrantes h2 {
+        margin-top: 1em;
+        text-align: center;
+    }
+
+    .datos-integrantes p {
+        font-size: 18px;
+        margin: auto;
+        text-align: center;
+    }
+
+
+    /*ALBUMES*/
+    .contenedor-todos-albumes {
+        margin-top: 6em;
+        margin-bottom: 6em;
+        display: grid;
+        grid-template-columns: 300px;
+        grid-template-rows: auto;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .albumes-img {
+        width: 200px;
+    }
+
+
+
+
+    /*GALERIA*/
+    .grid-galeria {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .galeria-img {
+        width: 250px;
+        margin: 15px;
+    }
+
+    .galeria-img:hover {
+        filter: none;
+        width: 300px;
+        z-index: 100;
+        box-shadow: 0 0 20px #753e3e;
+        border-radius: 0px;
+    }
+
+
+
+
+
+    /*CONTACTOS*/
+    legend {
+        font-size: 1em;
+    }
+
+    .formulario {
+        display: flex;
+        justify-content: center;
+    }
+
+    fieldset {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 300px;
+    }
+
+    input,
+    textarea {
+        width: 250px;
+    }
+
+    textarea {
+        min-height: 20em;
+        max-height: 20em;
+        min-width: 250px;
+        max-width: 250px;
+    }
+
+
+
+
+    /*SINGLES*/
+    .letra-portada-titulo-iframe {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .portadas {
+        width: 250px;
+    }
+
+    .iframe {
+        width: 100px;
+        height: auto;
+    }
+
+    .letra-fondo {
+        width: 220px;
+    }
+
+
+
+
+
+    /*PAGINA PRESENTACION AL EP CON SUS CANCIONES*/
+    .ep-lista-de-canciones {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .portada-de-aca-a-la-luna {
+        width: 200px;
+    }
+
+    .de-aca-a-la-luna h2 {
+        font-size: 20px;
+    }
+
+    .de-aca-a-la-luna ol li a {
+        font-size: 18px;
+    }
+
+
+
+
+
+    /*CADA CANCION DEL EP*/
+    .orden-portada-lista-de-temas {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .iconos {
+        display: none;
+    }
+}
+
+@media only screen and (min-width:426px) and (max-width:990px) {
+
+    /*GENERALES DE LA PAGINA E INDEX*/
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .body-index {
+        display: grid;
+        grid-template-areas:
+            "header header"
+            "nav nav"
+            "section aside"
+            "footer footer";
+        grid-template-columns: 65% 1fr;
+        grid-template-rows: auto;
+    }
+
+    .logo {
+        text-align: center;
+    }
+
+    .logo-img {
+        width: 300px;
+    }
+
+    h1 {
+        font-size: 25px;
+        width: max-content;
+        margin-left: 5px;
+    }
+
+    .titulo-presentacion {
+        font-size: 30px;
+    }
+
+    .section-index {
+        justify-self: center;
+        margin-left: 10px;
+
+    }
+
+    .section-index article p {
+        width: justify;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .presentacion {
+        width: justify;
+        margin: auto;
+    }
+
+    .nav-desktop {
+        display: none;
+    }
+
+    .nav-mobile ul {
+        display: none;
+        padding: 5px;
+        background: none;
+        animation-name: menu-hacia-abajo;
+        animation-duration: 0.7s;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes menu-hacia-abajo {
+        0% {
+            height: 0px;
+        }
+
+        100% {
+            height: 200px;
+        }
+    }
+
+    .nav-mobile ul li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-mobile ul li ul li {
+        display: none;
+    }
+
+    .nav-mobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background: linear-gradient(0deg, rgba(255, 0, 45, 1) 0%, rgba(203, 139, 150, 1) 10%, rgba(70, 53, 56, 1) 42%);
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        z-index: 1000;
+
+    }
+
+    .nav-mobile img {
+        width: 50px;
+        z-index: 1000;
+    }
+
+    .nav-mobile:hover ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+
+    .grid-sin-aside {
+        display: grid;
+        grid-template-areas:
+            "header"
+            "nav"
+            "section"
+            "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+
+
+
+    .index-img {
+        display: none;
+    }
+
+    #pandemia,
+    .contenedor-inicios,
+    .contenedor-post-pandemia {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    aside {
+        width: 200px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        /* background-position-x: 300px;
+            background-position-y: 200px; */
+    }
+
+    aside h4 {
+        font-size: 2em;
+    }
+
+    aside h5 {
+        font-size: 1.2em;
+    }
+
+    aside ol {
+        width: 150px;
+    }
+
+    aside ol li {
+        font-size: 1em;
+    }
+
+    .icono-footer {
+        width: 50px;
+    }
+
+
+    /*INTEGRANTES*/
+    .datos-integrantes {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 3em;
+        margin: 0;
+    }
+
+    .bloque-integrantes h2 {
+        margin-top: 1em;
+        text-align: center;
+    }
+
+    .datos-integrantes p {
+        font-size: 18px;
+        margin: auto;
+        text-align: center;
+    }
+
+
+
+    /*ALBUMES*/
+
+    .contenedor-todos-albumes {
+        margin-top: 6em;
+        margin-bottom: 6em;
+        display: grid;
+        grid-template-columns: 200px 200px;
+        grid-template-rows: auto;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .albumes-img {
+        width: 200px;
+        height: auto;
+    }
+
+    .bloque-album h2 {
+        font-size: 15px;
+    }
+
+    .iconos {
+        display: none;
+    }
+
+
+
+
+    /*GALERIA*/
+    .container-fotos-galeria {
+        margin: auto;
+    }
+
+    .grid-galeria {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .galeria-img {
+        width: 130px;
+        height: auto;
+        grid-column: unset;
+        grid-row: unset;
+        transition: 1s;
+    }
+
+    .galeria-img:hover {
+        filter: none;
+        width: 300px;
+        z-index: 100;
+        box-shadow: 0 0 20px #753e3e;
+        border-radius: 0px;
+    }
+
+    /*SINGLES*/
+    .letra-portada-titulo-iframe {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .portadas {
+        width: 250px;
+    }
+
+    .iframe {
+        width: 100px;
+        height: auto;
+    }
+
+    .letra-fondo {
+        width: 220px;
+    }
+
+
+
+
+
+    /*PAGINA PRESENTACION AL EP CON SUS CANCIONES*/
+    .ep-lista-de-canciones {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .portada-de-aca-a-la-luna {
+        width: 200px;
+    }
+
+    .de-aca-a-la-luna h2 {
+        font-size: 20px;
+    }
+
+    .de-aca-a-la-luna ol li a {
+        font-size: 18px;
+    }
+
+
+
+
+
+    /*CADA CANCION DEL EP*/
+    .orden-portada-lista-de-temas {
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+@media only screen and (min-width:990px) and (max-width:1790px) {
+    .body-index {
+        display: grid;
+        grid-template-areas:
+            "header header header"
+            "nav section aside"
+            "footer footer footer";
+        grid-template-columns: 10% 60% 1fr;
+        grid-template-rows: auto;
+    }
+
+    nav {
+        transform: translateX(-175px);
+        transition: 1s;
+        animation-name: borde-indicativo;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes borde-indicativo {
+        0% {
+            border-right: 2px solid #ff6600;
+        }
+
+        50% {
+            border-right: 0px solid #ff660000;
+            box-shadow: 0 10px 30px #ffc40093;
+        }
+
+        100% {
+            border-right: 2px solid #ff6600;
+        }
+    }
+
+    nav:hover {
+        transform: translateX(0);
+        animation: none;
+    }
+
+    nav ul li a {
+        margin-right: 30px;
+    }
+
+    li ul li {
+        display: none;
+    }
+
+    li ul {
+        animation: none;
+    }
+
+    .section-index article {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dimenciones-contenedor-historia,
+    .dimenciones-contenedor-historia div {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .albumes-img {
+        width: 200px;
+        height: auto;
+    }
+
+    .section-index {
+        justify-self: center;
+        margin-left: 10px;
+
+    }
+
+    .section-index article p {
+        width: justify;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .presentacion {
+        width: justify;
+        margin: auto;
+    }
+
+    aside {
+        background-size: cover;
+        background-position-x: 400px;
+        background-position-y: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+
+    aside h4 {
+        font-size: 50px
+    }
+
+    aside ol {
+        width: 200px;
+    }
+
+    aside ol li {
+        font-size: 20px;
+    }
+
+    .img-banda {
+        width: 500px;
+        height: auto;
+    }
+
+    /*GALERIA*/
+    .container-fotos-galeria {
+        margin: auto;
+    }
+
+    .galeria-img {
+        width: 200px;
+        height: auto;
+        transition: 1s;
+    }
+
+    .galeria-img:hover {
+        filter: none;
+        width: 400px;
+        z-index: 100;
+        box-shadow: 0 0 20px #753e3e;
+        border-radius: 0px;
+    }
+
+    /*ALBUMES*/
+
+    .contenedor-todos-albumes {
+        margin-top: 6em;
+        margin-bottom: 6em;
+        display: grid;
+        grid-template-columns: 400px 1fr;
+        grid-template-rows: auto;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .albumes-img {
+        width: 400px;
+        height: auto;
+    }
+
+    .bloque-album h2 {
+        font-size: 15px;
+    }
+
+    .iconos {
+        display: none;
+    }
+
+    /*SINGLES*/
+    .letra-portada-titulo-iframe {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: start;
+        gap: 200px;
+    }
+
+    .portadas {
+        width: 250px;
+    }
+
+    .iframe {
+        width: 100px;
+        height: auto;
+    }
+
+    .letra-fondo {
+        width: 220px;
+    }
+
+    /*CADA CANCION DEL EP*/
+    .orden-portada-lista-de-temas {
+        display: flex;
+        flex-direction: column;
+    }
+}
