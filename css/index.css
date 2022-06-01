@@ -279,7 +279,7 @@ li ul li a {
 .presentacion-div{
     display: flex;
     justify-content:center;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
@@ -308,7 +308,7 @@ li ul li a {
 .contenedor-bienvenida{
     text-align: center;
     position: relative;
-    top: 15%;
+    top: 30%;
 }
 
 .bienvenida-texto{
@@ -934,6 +934,19 @@ h3 {
 }
 
 @media only screen and (max-width:425px) {
+    .presentacion-div{
+        width: 100%;
+    }
+    .contenedor-bienvenida{
+        top: 50%;
+    }
+    .bienvenida-texto{
+        font-size:1em
+    }
+
+    .bienvenida-nombre{
+        font-size: 3em;
+    }
 
     /*GENERALES DE LA PAGINA E INDEX*/
     * {
@@ -1252,6 +1265,20 @@ h3 {
 
 @media only screen and (min-width:426px) and (max-width:990px) {
 
+    .presentacion-div{
+        width: 100%;
+    }
+    .contenedor-bienvenida{
+        top: 50%;
+    }
+    .bienvenida-texto{
+        font-size:2em
+    }
+
+    .bienvenida-nombre{
+        font-size: 5em;
+    }
+
     /*GENERALES DE LA PAGINA E INDEX*/
     * {
         margin: 0;
@@ -1561,6 +1588,7 @@ h3 {
 }
 
 @media only screen and (min-width:990px) and (max-width:1790px) {
+
     .body-index {
         display: grid;
         grid-template-areas:
